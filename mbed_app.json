@@ -1,0 +1,33 @@
+{
+    "config": {
+        "main_stack_size": {
+            "value": 4096
+        }
+    },
+    "macros": [
+        "HAVE_DEBUG=1",
+        "MBED_ROM_START=0x0",
+        "MBED_ROM_SIZE=(1024*1024)",
+        "SAADC_CONFIG_OVERSAMPLE=8",
+        "SAADC_CONFIG_RESOLUTION=2"
+    ],
+    "target_overrides": {
+        "EP_AGORA": {
+            "target.features_remove"                        : ["BLE"],
+            "target.extra_labels_remove"                    : ["SOFTDEVICE_COMMON", "SOFTDEVICE_S140_FULL", "NORDIC_SOFTDEVICE"],
+            "target.extra_labels_add"                       : ["SOFTDEVICE_NONE"],
+            "target.components_remove"                      : ["QSPIF"],
+            "target.modem_is_on_board"                      : 0,
+            "target.modem_data_connection_type"             : 0,
+            "platform.stdio-baud-rate"                      : 115200,
+            "platform.default-serial-baud-rate"             : 115200,
+            "platform.stdio-convert-newlines"               : true,
+            "platform.stdio-buffered-serial"                : true,
+            "drivers.uart-serial-txbuf-size"                : 1024,
+            "drivers.uart-serial-rxbuf-size"                : 1024,
+            "mbed-trace.enable"                             : 1,
+            "ep-agora.enable-cell"                          : false
+        }
+    }
+
+}
